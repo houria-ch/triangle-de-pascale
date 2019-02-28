@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <script src="index.js"></script> -->
+    <title>Triangle de Pascal</title>
+    <style>
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #titre {
+            color: deeppink;
+            font-size: 4rem;
+            text-align: center;
+
+        }
+
+        td {
+          
+            text-align: center;
+            width: 5rem;
+            background-color: aqua
+            
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="titre">Triangle de PASCAL</h1>
+    <table class="tab">
+
+    </table>
+    <script>
+        
+       
+
+        function createPascalTriangle(numRows) {
+
+
+            var pascalTriangle = [];
+
+            for (var i = 0; i <= Number(numRows); i++) {
+
+                pascalTriangle.push([])
+
+                for (var j = 0; j < i + 1; j++) {
+                    if (j === 0 || j === i) {
+                        pascalTriangle[i][j] = 1;
+                    } else {
+                        pascalTriangle[i][j] = pascalTriangle[i - 1][j - 1] + pascalTriangle[i - 1][j];
+                    }
+                }
+            }
+           
+            return pascalTriangle;
+         
+
+
+        }
+
+        var pascal = createPascalTriangle(prompt("entrez le niveau de triangle de pascal"));
+        
+        var table = document.getElementsByClassName("tab")[0];
+       
+        for (var i = 0; i < pascal.length; i++) {
+
+            let row = table.insertRow(i);
+
+            for (var j = 0; j < pascal[i].length; j++) {
+
+                let cell = row.insertCell(j);
+                cell.innerHTML = pascal[i][j]
+            }
+        }
+    </script>
+</body>
+
+</html>
